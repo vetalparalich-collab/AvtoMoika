@@ -1,121 +1,1702 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="АвтоМойка — премиальный уход за автомобилем. Комплексная мойка, детейлинг, полировка, химчистка салона и защитные покрытия.">
-<meta name="theme-color" content="#080909">
-<title>АвтоМойка — Премиальный уход за автомобилем</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<script src="https://unpkg.com/lucide@latest"></script>
-<style>
-:root{--bg:#080909;--bg-soft:#101212;--bg-card:#141616;--bg-card-hover:#1b1e1e;--text:#f5f5f0;--text-muted:#969b98;--text-dark:#080909;--gold:#d5b477;--gold-light:#f0d5a0;--gold-dark:#947442;--border:rgba(255,255,255,.09);--border-gold:rgba(213,180,119,.35);--container:1200px;--radius:18px;--radius-large:28px;--transition:.3s ease}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;scroll-padding-top:100px}
-body{background:var(--bg);color:var(--text);font-family:Manrope,sans-serif;font-size:15px;line-height:1.7;overflow-x:hidden}
-body.menu-open{overflow:hidden}
-a{color:inherit;text-decoration:none}button,input,textarea{font:inherit}button{cursor:pointer}img{display:block;max-width:100%}::selection{background:var(--gold);color:var(--text-dark)}
-.container{width:min(var(--container),calc(100% - 48px));margin-inline:auto}.section{padding:110px 0}
-.section-label{display:inline-flex;align-items:center;gap:12px;color:var(--gold);font-family:Montserrat,sans-serif;font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:22px}
-.section-label::before{content:"";width:28px;height:1px;background:var(--gold)}
-.section-title{font-family:Montserrat,sans-serif;font-size:clamp(32px,4vw,54px);line-height:1.15;font-weight:600;letter-spacing:-2px}
-.section-title span,.gold-text{color:var(--gold)}.section-description{max-width:570px;margin-top:22px;color:var(--text-muted);font-size:15px}
-.btn{display:inline-flex;justify-content:center;align-items:center;gap:12px;min-height:54px;padding:0 27px;border:1px solid transparent;border-radius:4px;font-size:12px;font-weight:800;letter-spacing:.7px;transition:background var(--transition),color var(--transition),border-color var(--transition),transform var(--transition);white-space:nowrap}
-.btn:hover{transform:translateY(-2px)}.btn-primary{background:var(--gold);color:var(--text-dark)}.btn-primary:hover{background:var(--gold-light)}.btn-outline{border-color:rgba(255,255,255,.24);color:var(--text);background:transparent}.btn-outline:hover{border-color:var(--gold);color:var(--gold)}.btn svg{width:16px;height:16px}
-.header{position:fixed;z-index:1000;top:0;left:0;width:100%;border-bottom:1px solid transparent;transition:background var(--transition),border-color var(--transition)}.header.scrolled{background:rgba(8,9,9,.94);backdrop-filter:blur(18px);border-bottom-color:var(--border)}
-.header-inner{height:88px;display:flex;align-items:center;justify-content:space-between;gap:35px}.logo{display:inline-flex;align-items:center;gap:12px;flex-shrink:0}.logo-icon{width:42px;height:42px;display:grid;place-items:center;border:1px solid var(--border-gold);border-radius:12px;color:var(--gold)}.logo-icon svg{width:23px;height:23px}.logo-text{display:flex;flex-direction:column;line-height:1.2}.logo-name{font-family:Montserrat,sans-serif;font-size:17px;font-weight:800;letter-spacing:-.5px}.logo-subtitle{margin-top:4px;color:var(--text-muted);font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase}
-.nav{display:flex;align-items:center;gap:32px}.nav a{color:#c2c5c1;font-size:12px;font-weight:600;transition:color var(--transition)}.nav a:hover{color:var(--gold)}.header-action{flex-shrink:0}.menu-toggle{display:none;width:44px;height:44px;border:1px solid var(--border);background:transparent;color:var(--text);border-radius:8px}
-.hero{position:relative;min-height:min(900px,100svh);display:flex;align-items:center;overflow:hidden;isolation:isolate}.hero-bg{position:absolute;inset:0;z-index:-2;background:linear-gradient(90deg,rgba(8,9,9,.98) 0%,rgba(8,9,9,.88) 38%,rgba(8,9,9,.4) 72%,rgba(8,9,9,.2) 100%),linear-gradient(0deg,#080909 0%,transparent 28%,rgba(8,9,9,.12) 100%),url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=2400&q=85');background-size:cover;background-position:center;transform:scale(1.04);animation:heroZoom 18s ease-out forwards}
-.hero::after{content:"";position:absolute;z-index:-1;inset:0;background:radial-gradient(circle at 75% 50%,rgba(213,180,119,.08),transparent 45%)}
-.hero-content{padding-top:95px;padding-bottom:65px;max-width:760px}.hero-eyebrow{display:inline-flex;align-items:center;gap:12px;margin-bottom:28px;color:var(--gold);font-family:Montserrat,sans-serif;font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase}.hero-eyebrow::before{content:"";width:35px;height:1px;background:var(--gold)}
-.hero h1{max-width:800px;font-family:Montserrat,sans-serif;font-size:clamp(42px,6.5vw,82px);line-height:1.08;font-weight:600;letter-spacing:-4px}.hero h1 span{color:var(--gold)}.hero-description{max-width:520px;margin-top:28px;color:#b9bdb9;font-size:16px;line-height:1.9}.hero-buttons{display:flex;flex-wrap:wrap;gap:14px;margin-top:38px}.hero-bottom{display:flex;align-items:center;gap:24px;margin-top:75px}.hero-bottom-line{width:50px;height:1px;background:var(--gold-dark)}.hero-bottom-text{color:#a0a4a0;font-size:10px;letter-spacing:2px;text-transform:uppercase}.hero-scroll{position:absolute;right:max(24px,calc((100% - var(--container))/2));bottom:65px;display:flex;align-items:center;gap:14px;color:#9a9e9a;font-size:10px;letter-spacing:2px;text-transform:uppercase;writing-mode:vertical-rl}.hero-scroll svg{width:16px;height:16px;color:var(--gold);animation:scrollArrow 1.8s infinite}
-.about{position:relative;background:var(--bg)}.about-grid{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:100px}.about-visual{position:relative;min-height:510px}.about-image{position:absolute;inset:0 55px 45px 0;border-radius:var(--radius-large);overflow:hidden;background:linear-gradient(180deg,transparent 50%,rgba(0,0,0,.55)),url('https://images.unsplash.com/photo-1607860108855-64acf2078ed9?auto=format&fit=crop&w=1200&q=85');background-position:center;background-size:cover}.about-image::after{content:"";position:absolute;inset:0;border:1px solid rgba(255,255,255,.08);border-radius:inherit}.about-image-label{position:absolute;left:30px;bottom:26px;color:#fff;font-family:Montserrat,sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase}.about-floating{position:absolute;right:0;bottom:0;width:190px;padding:25px;background:var(--gold);color:var(--text-dark);border-radius:12px}.about-floating strong{display:block;font-family:Montserrat,sans-serif;font-size:28px;line-height:1.2}.about-floating span{display:block;margin-top:8px;font-size:11px;font-weight:600}.about-content .section-title{max-width:560px}.about-content>p{margin-top:25px;color:var(--text-muted);font-size:14px}.features{display:grid;grid-template-columns:1fr 1fr;gap:28px 22px;margin-top:38px}.feature{display:flex;align-items:flex-start;gap:14px}.feature-icon{flex-shrink:0;width:42px;height:42px;display:grid;place-items:center;border:1px solid var(--border-gold);border-radius:10px;color:var(--gold)}.feature-icon svg{width:19px;height:19px}.feature h3{margin-bottom:6px;font-size:12px;font-weight:800}.feature p{color:var(--text-muted);font-size:11px;line-height:1.7}
-.services{background:var(--bg-soft);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}.services-header{display:flex;align-items:flex-end;justify-content:space-between;gap:40px;margin-bottom:55px}.services-header .section-description{max-width:400px;margin-top:0}.services-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}.service-card{position:relative;min-height:330px;padding:30px 25px;display:flex;flex-direction:column;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:background var(--transition),border-color var(--transition),transform var(--transition)}.service-card:hover{background:var(--bg-card-hover);border-color:var(--border-gold);transform:translateY(-6px)}.service-number{color:var(--gold);font-family:Montserrat,sans-serif;font-size:11px;font-weight:700;letter-spacing:1.5px}.service-icon{width:54px;height:54px;display:grid;place-items:center;margin-top:35px;color:var(--gold);background:rgba(213,180,119,.08);border:1px solid rgba(213,180,119,.16);border-radius:14px}.service-icon svg{width:25px;height:25px}.service-card h3{margin-top:26px;font-family:Montserrat,sans-serif;font-size:17px;font-weight:600;line-height:1.5}.service-card p{margin-top:12px;color:var(--text-muted);font-size:12px;line-height:1.8}.service-arrow{position:absolute;right:24px;top:28px;color:#666b67;transition:color var(--transition),transform var(--transition)}.service-card:hover .service-arrow{color:var(--gold);transform:translate(3px,-3px)}
-.cta-section{padding:80px 0;background:var(--bg)}.cta-box{position:relative;padding:70px 65px;display:flex;align-items:center;justify-content:space-between;gap:40px;background:radial-gradient(circle at 80% 50%,rgba(213,180,119,.11),transparent 45%),#131515;border:1px solid var(--border-gold);border-radius:var(--radius-large);overflow:hidden}.cta-box::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--gold)}.cta-box h2{max-width:650px;font-family:Montserrat,sans-serif;font-size:clamp(28px,4vw,44px);line-height:1.2;letter-spacing:-1.5px}.cta-box p{margin-top:15px;color:var(--text-muted);font-size:13px}.cta-box .btn{flex-shrink:0}
-.contacts{background:var(--bg-soft);border-top:1px solid var(--border)}.contacts-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:100px}.contact-info{margin-top:40px}.contact-item{display:flex;align-items:flex-start;gap:18px;padding:22px 0;border-bottom:1px solid var(--border)}.contact-icon{width:44px;height:44px;display:grid;place-items:center;flex-shrink:0;border:1px solid var(--border-gold);border-radius:10px;color:var(--gold)}.contact-icon svg{width:19px;height:19px}.contact-item small{display:block;margin-bottom:5px;color:var(--text-muted);font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase}.contact-item strong,.contact-item a{font-size:14px;font-weight:700}.contact-item a:hover{color:var(--gold)}.social-links{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}.social-link{display:inline-flex;align-items:center;gap:10px;padding:12px 16px;border:1px solid var(--border);border-radius:8px;color:#c9ccc8;font-size:11px;font-weight:700;transition:var(--transition)}.social-link:hover{border-color:var(--gold);color:var(--gold)}.social-link svg{width:17px;height:17px}
-.contact-form{padding:38px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-large)}.contact-form h3{font-family:Montserrat,sans-serif;font-size:23px;font-weight:600}.contact-form>p{margin-top:10px;margin-bottom:28px;color:var(--text-muted);font-size:12px}.form-group{margin-bottom:20px}.form-group label{display:block;margin-bottom:9px;color:#c5c8c4;font-size:11px;font-weight:700}.form-group input,.form-group textarea{width:100%;padding:15px 16px;background:#0d0f0f;border:1px solid rgba(255,255,255,.1);border-radius:8px;color:var(--text);font-size:13px;outline:none;transition:border-color var(--transition)}.form-group input:focus,.form-group textarea:focus{border-color:var(--gold)}.form-group input::placeholder,.form-group textarea::placeholder{color:#626762}.form-group textarea{min-height:110px;resize:vertical}.contact-form .btn{width:100%}.form-note{margin-top:15px;color:#7d827d;font-size:10px;line-height:1.7}.form-status{margin-top:16px;font-size:12px;color:var(--gold)}
-.footer{background:var(--bg);border-top:1px solid var(--border)}.footer-main{padding:45px 0;display:flex;align-items:center;justify-content:space-between;gap:30px}.footer-text{max-width:300px;margin-top:12px;color:var(--text-muted);font-size:11px}.footer-nav{display:flex;flex-wrap:wrap;gap:25px}.footer-nav a{color:#a3a7a3;font-size:11px;font-weight:600;transition:color var(--transition)}.footer-nav a:hover{color:var(--gold)}.footer-bottom{min-height:65px;display:flex;align-items:center;justify-content:space-between;gap:20px;border-top:1px solid var(--border);color:#737873;font-size:10px}.footer-bottom a:hover{color:var(--gold)}
-.reveal{opacity:0;transform:translateY(25px);transition:opacity .8s ease,transform .8s ease}.reveal.visible{opacity:1;transform:translateY(0)}.reveal-delay-1{transition-delay:.12s}.reveal-delay-2{transition-delay:.24s}.reveal-delay-3{transition-delay:.36s}
-@keyframes heroZoom{from{transform:scale(1.04)}to{transform:scale(1)}}@keyframes scrollArrow{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
-@media(max-width:1100px){.nav{gap:20px}.about-grid{gap:55px}.services-grid{grid-template-columns:repeat(2,1fr)}.contacts-grid{gap:50px}.cta-box{padding:55px 45px}}
-@media(max-width:850px){.section{padding:85px 0}.header-inner{height:76px}.menu-toggle{display:grid;place-items:center}.header-action{display:none}.nav{position:fixed;top:76px;left:0;right:0;bottom:0;padding:35px 24px;display:flex;flex-direction:column;align-items:stretch;gap:0;background:rgba(8,9,9,.98);backdrop-filter:blur(20px);opacity:0;visibility:hidden;transform:translateY(-10px);transition:opacity var(--transition),visibility var(--transition),transform var(--transition)}.nav.active{opacity:1;visibility:visible;transform:translateY(0)}.nav a{padding:19px 0;border-bottom:1px solid var(--border);font-family:Montserrat,sans-serif;font-size:18px}.hero{min-height:760px}.hero-bg{background-position:62% center}.hero-scroll{display:none}.about-grid{grid-template-columns:1fr;gap:60px}.about-visual{min-height:480px}.about-content{max-width:650px}.services-header{align-items:flex-start;flex-direction:column;gap:20px}.services-header .section-description{max-width:550px}.cta-box{align-items:flex-start;flex-direction:column}.contacts-grid{grid-template-columns:1fr;gap:55px}.contact-form{max-width:650px}.footer-main{align-items:flex-start;flex-direction:column}}
-@media(max-width:550px){.container{width:calc(100% - 36px)}.section{padding:70px 0}.section-title{font-size:34px;letter-spacing:-1.5px}.hero{min-height:720px;min-height:100svh}.hero-bg{background-position:60% center;background-image:linear-gradient(90deg,rgba(8,9,9,.95),rgba(8,9,9,.66)),linear-gradient(0deg,#080909 0%,transparent 35%),url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1200&q=85')}.hero-content{padding-top:100px;padding-bottom:50px}.hero h1{font-size:clamp(39px,11vw,57px);letter-spacing:-2.5px}.hero-description{font-size:14px}.hero-buttons{flex-direction:column;align-items:stretch}.hero-buttons .btn{width:100%}.hero-bottom{margin-top:55px}.about-visual{min-height:380px}.about-image{inset:0 30px 35px 0}.about-floating{width:155px;padding:20px}.about-floating strong{font-size:24px}.features{grid-template-columns:1fr;gap:23px}.services-grid{grid-template-columns:1fr;gap:14px}.service-card{min-height:280px}.service-icon{margin-top:24px}.cta-section{padding:45px 0}.cta-box{padding:38px 25px;gap:25px;border-radius:18px}.cta-box h2{font-size:30px;letter-spacing:-1px}.cta-box .btn{width:100%}.contact-form{padding:25px 20px;border-radius:18px}.social-links{gap:9px}.social-link{padding:11px 13px}.footer-nav{gap:18px}.footer-bottom{padding:18px 0;align-items:flex-start;flex-direction:column;justify-content:center;gap:8px}}
-@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}.reveal{opacity:1;transform:none}}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#080a0d" />
+  <title>АвтоМойка — Премиальный уход за автомобилем</title>
+  <style>
+    :root {
+      --bg: #080a0d;
+      --bg-surface: #0f131a;
+      --bg-card: rgba(255, 255, 255, 0.03);
+      --border: rgba(255, 255, 255, 0.09);
+      --border-accent: rgba(56, 189, 248, 0.45);
+      --text: #f3f6fa;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-2: #818cf8;
+      --accent-glow: rgba(56, 189, 248, 0.24);
+      --danger: #f87171;
+      --success: #34d399;
+      --radius-lg: 24px;
+      --radius-md: 16px;
+      --radius-sm: 12px;
+      --container: 1200px;
+      --header-h: 74px;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: calc(var(--header-h) + 20px);
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      min-height: 100vh;
+      overflow-x: hidden;
+      background-color: var(--bg);
+      background-image:
+        radial-gradient(circle at 12% 6%, rgba(56, 189, 248, 0.11), transparent 34%),
+        radial-gradient(circle at 88% 22%, rgba(129, 140, 248, 0.09), transparent 38%),
+        linear-gradient(rgba(255, 255, 255, 0.018) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.018) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 48px 48px, 48px 48px;
+      background-position: 0 0, 0 0, -1px -1px, -1px -1px;
+    }
+
+    body.menu-open {
+      overflow: hidden;
+    }
+
+    .skip-link {
+      position: fixed;
+      left: -9999px;
+      top: 12px;
+      background: var(--accent);
+      color: #05080c;
+      padding: 10px 16px;
+      border-radius: 8px;
+      font-weight: 700;
+      z-index: 1000;
+    }
+    .skip-link:focus {
+      left: 16px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Header */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      background: rgba(8, 10, 13, 0.85);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: var(--header-h);
+      gap: 16px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--text);
+      flex-shrink: 0;
+    }
+
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      border-radius: 11px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      display: grid;
+      place-items: center;
+      color: #050910;
+      font-weight: 800;
+      font-size: 15px;
+      box-shadow: 0 0 24px var(--accent-glow);
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.15;
+    }
+
+    .brand-title {
+      font-weight: 700;
+      font-size: 17px;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-sub {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .desktop-nav {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .desktop-nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .desktop-nav a:hover,
+    .desktop-nav a:focus-visible {
+      color: var(--text);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 13px 24px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .btn:active {
+      transform: scale(0.98);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), #60a5fa);
+      color: #050910;
+      box-shadow: 0 10px 28px rgba(56, 189, 248, 0.25);
+    }
+
+    @media (hover: hover) {
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 14px 36px rgba(56, 189, 248, 0.38);
+      }
+      .btn-outline:hover {
+        border-color: var(--border-accent);
+        background: rgba(56, 189, 248, 0.08);
+      }
+    }
+
+    .btn-outline {
+      background: rgba(255, 255, 255, 0.035);
+      color: var(--text);
+      border-color: var(--border);
+    }
+
+    .nav-cta {
+      padding: 10px 18px;
+      font-size: 13px;
+    }
+
+    .burger-btn {
+      display: none;
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border);
+      color: var(--text);
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    /* Mobile Drawer */
+    .mobile-drawer {
+      position: fixed;
+      inset: var(--header-h) 0 0 0;
+      z-index: 190;
+      background: rgba(8, 10, 13, 0.98);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      padding: 28px 24px 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-8px);
+      transition: opacity 0.24s ease, transform 0.24s ease, visibility 0.24s ease;
+    }
+
+    .mobile-drawer.is-open {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .mobile-nav-links {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .mobile-nav-links a {
+      padding: 16px 12px;
+      color: var(--text);
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: 600;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .mobile-drawer-footer {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    /* Hero */
+    .hero {
+      padding: 68px 0 60px;
+      position: relative;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+      gap: 40px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 14px;
+      border-radius: 999px;
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .eyebrow-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 10px var(--accent);
+      flex-shrink: 0;
+    }
+
+    h1 {
+      font-size: clamp(33px, 4.9vw, 60px);
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      font-weight: 800;
+      margin-bottom: 20px;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #ffffff 20%, var(--accent) 72%, var(--accent-2) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-desc {
+      font-size: 17px;
+      color: var(--text-muted);
+      max-width: 560px;
+      margin-bottom: 30px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 30px;
+    }
+
+    .hero-tagline {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .hero-tagline strong {
+      color: var(--text);
+      letter-spacing: 0.04em;
+    }
+
+    /* Graphic Studio Card */
+    .hero-visual {
+      position: relative;
+      border-radius: var(--radius-lg);
+      background:
+        radial-gradient(circle at 82% 18%, rgba(56, 189, 248, 0.22), transparent 52%),
+        radial-gradient(circle at 18% 84%, rgba(129, 140, 248, 0.18), transparent 52%),
+        linear-gradient(160deg, #131924 0%, #0b0e14 100%);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 30px;
+      min-height: 380px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    }
+
+    .hero-visual::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+      background-size: 28px 28px;
+      mask-image: radial-gradient(circle at center, black 42%, transparent 86%);
+      -webkit-mask-image: radial-gradient(circle at center, black 42%, transparent 86%);
+      pointer-events: none;
+    }
+
+    .visual-top {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .visual-badge {
+      padding: 7px 13px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border);
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .visual-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--success);
+    }
+
+    .visual-status::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--success);
+      box-shadow: 0 0 8px var(--success);
+    }
+
+    .visual-center {
+      position: relative;
+      z-index: 1;
+      margin: 22px 0;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .visual-ring {
+      width: 104px;
+      height: 104px;
+      border-radius: 50%;
+      border: 1px solid rgba(56, 189, 248, 0.42);
+      display: grid;
+      place-items: center;
+      background: radial-gradient(circle, rgba(56, 189, 248, 0.16), transparent 72%);
+      box-shadow: 0 0 40px rgba(56, 189, 248, 0.22);
+      flex-shrink: 0;
+    }
+
+    .visual-caption {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .visual-caption strong {
+      display: block;
+      color: var(--text);
+      font-size: 15px;
+      margin-bottom: 4px;
+    }
+
+    .visual-metric {
+      position: relative;
+      z-index: 1;
+      padding: 18px 20px;
+      border-radius: var(--radius-md);
+      background: rgba(8, 10, 13, 0.8);
+      border: 1px solid var(--border-accent);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .visual-metric-num {
+      font-size: 32px;
+      font-weight: 800;
+      color: var(--accent);
+      line-height: 1;
+    }
+
+    .visual-metric-label {
+      font-size: 13px;
+      color: var(--text);
+      margin-top: 4px;
+    }
+
+    .visual-tags {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 4px;
+      font-size: 11px;
+      color: var(--text-muted);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    }
+
+    /* ==========================================================================
+       TRUE INFINITE LOOP TICKER (Уходит за левый край и сразу выходит справа)
+       ========================================================================== */
+    .ticker-wrap {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      border-top: 1px solid rgba(56, 189, 248, 0.24);
+      border-bottom: 1px solid rgba(56, 189, 248, 0.24);
+      background: linear-gradient(90deg, #0b0e14, #111826, #0b0e14);
+      padding: 16px 0;
+      user-select: none;
+    }
+
+    .ticker-wrap::before,
+    .ticker-wrap::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 64px;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .ticker-wrap::before {
+      left: 0;
+      background: linear-gradient(90deg, #080a0d 0%, transparent 100%);
+    }
+
+    .ticker-wrap::after {
+      right: 0;
+      background: linear-gradient(270deg, #080a0d 0%, transparent 100%);
+    }
+
+    .ticker-belt {
+      display: flex;
+      width: max-content;
+      will-change: transform;
+    }
+
+    .ticker-group {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+    }
+
+    .ticker-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 18px;
+      margin-right: 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.045);
+      border: 1px solid rgba(255, 255, 255, 0.11);
+      color: var(--text);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .ticker-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 8px var(--accent);
+      flex-shrink: 0;
+    }
+
+    .ticker-star {
+      color: var(--accent);
+      opacity: 0.7;
+      margin-right: 14px;
+      font-size: 12px;
+    }
+
+    /* Sections */
+    section {
+      padding: 88px 0;
+    }
+
+    .section-head {
+      max-width: 680px;
+      margin-bottom: 48px;
+    }
+
+    .section-kicker {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    h2 {
+      font-size: clamp(27px, 4vw, 44px);
+      line-height: 1.15;
+      letter-spacing: -0.025em;
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
+
+    .section-sub {
+      color: var(--text-muted);
+      font-size: 16px;
+    }
+
+    /* About */
+    .about-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 40px;
+      align-items: start;
+      margin-bottom: 48px;
+    }
+
+    .about-copy p {
+      color: var(--text-muted);
+      font-size: 16px;
+      margin-bottom: 16px;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .feature-card {
+      padding: 22px;
+      border-radius: var(--radius-md);
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      transition: border-color 0.25s ease, transform 0.25s ease;
+    }
+
+    @media (hover: hover) {
+      .feature-card:hover {
+        border-color: var(--border-accent);
+        transform: translateY(-3px);
+      }
+    }
+
+    .feature-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      display: grid;
+      place-items: center;
+      color: var(--accent);
+      margin-bottom: 14px;
+    }
+
+    .feature-card h3 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .feature-card p {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    /* Stats */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .stat-box {
+      padding: 26px 20px;
+      border-radius: var(--radius-md);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.015) 100%);
+      border: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .stat-num {
+      font-size: clamp(28px, 3.2vw, 36px);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #fff, var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 4px;
+    }
+
+    .stat-label {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    /* Services */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .service-card {
+      position: relative;
+      padding: 32px;
+      border-radius: var(--radius-lg);
+      background:
+        radial-gradient(circle at 100% 0%, rgba(56, 189, 248, 0.1), transparent 48%),
+        var(--bg-surface);
+      border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    @media (hover: hover) {
+      .service-card:hover {
+        border-color: var(--border-accent);
+        transform: translateY(-4px);
+        box-shadow: 0 20px 44px rgba(0, 0, 0, 0.35);
+      }
+    }
+
+    .service-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .service-code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      color: var(--accent);
+      padding: 5px 10px;
+      border-radius: 8px;
+      background: rgba(56, 189, 248, 0.09);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+    }
+
+    .service-card h3 {
+      font-size: 21px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .service-card p {
+      color: var(--text-muted);
+      font-size: 15px;
+      margin-bottom: 24px;
+    }
+
+    .service-link {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      align-self: flex-start;
+      padding: 6px 0;
+      transition: color 0.2s ease;
+    }
+
+    .service-link:hover,
+    .service-link:active {
+      color: var(--accent);
+    }
+
+    /* CTA Banner */
+    .cta-section {
+      padding-top: 0;
+    }
+
+    .cta-banner {
+      padding: 56px 44px;
+      border-radius: var(--radius-lg);
+      background:
+        radial-gradient(circle at 85% 20%, rgba(56, 189, 248, 0.22), transparent 50%),
+        linear-gradient(135deg, #121824 0%, #0b0f16 100%);
+      border: 1px solid var(--border-accent);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+      flex-wrap: wrap;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4);
+    }
+
+    .cta-banner h2 {
+      margin-bottom: 8px;
+    }
+
+    .cta-banner p {
+      color: var(--text-muted);
+      font-size: 16px;
+    }
+
+    /* Contacts & Form */
+    .contacts-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+      gap: 36px;
+      align-items: start;
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 14px;
+      margin: 26px 0;
+    }
+
+    .contact-item {
+      padding: 18px 20px;
+      border-radius: var(--radius-md);
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+    }
+
+    .contact-item-title {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .contact-item-val {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text);
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .contact-item-val:hover {
+      color: var(--accent);
+    }
+
+    .socials {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .social-pill {
+      padding: 10px 18px;
+      border-radius: 999px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      color: var(--text);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+      transition: border-color 0.2s ease, background 0.2s ease;
+    }
+
+    .social-pill:hover,
+    .social-pill:active {
+      border-color: var(--border-accent);
+      background: rgba(56, 189, 248, 0.1);
+    }
+
+    .form-card {
+      padding: 34px;
+      border-radius: var(--radius-lg);
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+    }
+
+    .form-card h3 {
+      font-size: 23px;
+      margin-bottom: 8px;
+    }
+
+    .form-card > p {
+      color: var(--text-muted);
+      font-size: 14px;
+      margin-bottom: 22px;
+    }
+
+    .form-group {
+      margin-bottom: 14px;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 14px 16px;
+      border-radius: var(--radius-sm);
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-family: inherit;
+      font-size: 16px;
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+
+    .form-control:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.14);
+    }
+
+    .form-control.is-invalid {
+      border-color: var(--danger);
+    }
+
+    .select-wrap {
+      position: relative;
+    }
+
+    .select-wrap::after {
+      content: "▾";
+      position: absolute;
+      right: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      pointer-events: none;
+      font-size: 14px;
+    }
+
+    select.form-control {
+      padding-right: 40px;
+    }
+
+    select.form-control option {
+      background: #0f131a;
+      color: var(--text);
+    }
+
+    textarea.form-control {
+      min-height: 92px;
+      resize: vertical;
+    }
+
+    .form-note {
+      margin-top: 12px;
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .form-status {
+      margin-top: 14px;
+      padding: 12px 14px;
+      border-radius: 10px;
+      font-size: 14px;
+      display: none;
+    }
+
+    .form-status.success {
+      display: block;
+      background: rgba(52, 211, 153, 0.12);
+      border: 1px solid rgba(52, 211, 153, 0.35);
+      color: var(--success);
+    }
+
+    .form-status.error {
+      display: block;
+      background: rgba(248, 113, 113, 0.12);
+      border: 1px solid rgba(248, 113, 113, 0.35);
+      color: var(--danger);
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 44px 0 calc(32px + env(safe-area-inset-bottom));
+      background: #06080b;
+    }
+
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 24px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .footer-desc {
+      max-width: 360px;
+      color: var(--text-muted);
+      font-size: 14px;
+      margin-top: 12px;
+    }
+
+    .footer-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .footer-nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .footer-nav a:hover {
+      color: var(--text);
+    }
+
+    .footer-bottom {
+      padding-top: 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 14px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .back-top {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .back-top:hover {
+      color: var(--accent);
+    }
+
+    /* Responsive Breakpoints */
+    @media (max-width: 960px) {
+      .desktop-nav {
+        display: none;
+      }
+
+      .burger-btn {
+        display: inline-flex;
+      }
+
+      .hero-grid,
+      .about-layout,
+      .contacts-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-visual {
+        min-height: 300px;
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 0 18px;
+      }
+
+      .nav-cta {
+        display: none;
+      }
+
+      .hero {
+        padding: 44px 0 44px;
+      }
+
+      .hero-desc {
+        font-size: 15px;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      .hero-actions .btn {
+        width: 100%;
+      }
+
+      .hero-visual {
+        padding: 24px;
+        min-height: auto;
+      }
+
+      .visual-ring {
+        width: 82px;
+        height: 82px;
+      }
+
+      .ticker-wrap::before,
+      .ticker-wrap::after {
+        width: 24px;
+      }
+
+      .ticker-pill {
+        padding: 7px 14px;
+        font-size: 12px;
+      }
+
+      section {
+        padding: 60px 0;
+      }
+
+      .features-grid,
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .stat-box {
+        padding: 20px 14px;
+      }
+
+      .service-card {
+        padding: 24px;
+      }
+
+      .cta-banner {
+        padding: 32px 22px;
+      }
+
+      .cta-banner .btn {
+        width: 100%;
+      }
+
+      .form-card {
+        padding: 24px 20px;
+      }
+    }
+  </style>
 </head>
-<body>
-<header class="header" id="header"><div class="container header-inner">
-<a href="#home" class="logo" aria-label="АвтоМойка — главная"><span class="logo-icon"><i data-lucide="car-front"></i></span><span class="logo-text"><span class="logo-name">АвтоМойка</span><span class="logo-subtitle">Premium car care</span></span></a>
-<nav class="nav" id="nav" aria-label="Основная навигация"><a href="#home">Главная</a><a href="#about">О нас</a><a href="#services">Услуги</a><a href="#contacts">Контакты</a></nav>
-<a href="#contacts" class="btn btn-primary header-action">Записаться <i data-lucide="arrow-up-right"></i></a>
-<button class="menu-toggle" id="menuToggle" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="nav"><i data-lucide="menu"></i></button>
-</div></header>
-<main>
-<section class="hero" id="home"><div class="hero-bg"></div><div class="container"><div class="hero-content">
-<div class="hero-eyebrow">Автомобильный уход нового уровня</div>
-<h1>Премиальный уход<br>за вашим <span>автомобилем</span></h1>
-<p class="hero-description">Безупречная чистота, профессиональный детейлинг и бережное отношение к каждой детали. Ваш автомобиль заслуживает большего.</p>
-<div class="hero-buttons"><a href="#contacts" class="btn btn-primary">Записаться на мойку <i data-lucide="arrow-up-right"></i></a><a href="#services" class="btn btn-outline">Наши услуги <i data-lucide="arrow-down"></i></a></div>
-<div class="hero-bottom"><span class="hero-bottom-line"></span><span class="hero-bottom-text">Чистота. Забота. Совершенство.</span></div>
-</div></div><a href="#about" class="hero-scroll" aria-label="Прокрутить вниз"><i data-lucide="arrow-down"></i><span>Scroll to explore</span></a></section>
-<section class="section about" id="about"><div class="container about-grid">
-<div class="about-visual reveal"><div class="about-image"><div class="about-image-label">Уход с вниманием к деталям</div></div><div class="about-floating"><strong>100%</strong><span>Внимание к вашему автомобилю</span></div></div>
-<div class="about-content reveal reveal-delay-1"><div class="section-label">О нашей философии</div><h2 class="section-title">Больше, чем <span>просто мойка</span></h2>
-<p>Мы создали пространство, где забота об автомобиле становится искусством. Используем профессиональную автохимию, современные технологии и опыт мастеров, чтобы сохранить идеальный внешний вид вашего автомобиля.</p><p>Каждая деталь имеет значение — от первого контакта с кузовом до финального блеска.</p>
-<div class="features">
-<div class="feature"><div class="feature-icon"><i data-lucide="shield-check"></i></div><div><h3>Бережный уход</h3><p>Безопасные составы и деликатная обработка поверхностей.</p></div></div>
-<div class="feature"><div class="feature-icon"><i data-lucide="sparkles"></i></div><div><h3>Идеальная чистота</h3><p>Работаем с деталями, которые обычно остаются незамеченными.</p></div></div>
-<div class="feature"><div class="feature-icon"><i data-lucide="users"></i></div><div><h3>Опытные мастера</h3><p>Профессиональный подход к каждому автомобилю.</p></div></div>
-<div class="feature"><div class="feature-icon"><i data-lucide="gem"></i></div><div><h3>Премиум материалы</h3><p>Профессиональная автохимия и качественные покрытия.</p></div></div>
-</div></div></div></section>
-<section class="section services" id="services"><div class="container"><div class="services-header"><div class="reveal"><div class="section-label">Наши услуги</div><h2 class="section-title">Совершенство <span>в каждой детали</span></h2></div><p class="section-description reveal reveal-delay-1">Подбираем индивидуальный уход с учетом состояния автомобиля, особенностей покрытия и ваших пожеланий.</p></div>
-<div class="services-grid">
-<article class="service-card reveal"><span class="service-number">01 / WASH</span><div class="service-icon"><i data-lucide="droplets"></i></div><h3>Комплексная премиум-мойка</h3><p>Многоэтапное очищение кузова, колес, стекол и труднодоступных элементов с использованием профессиональной химии.</p><i data-lucide="arrow-up-right" class="service-arrow"></i></article>
-<article class="service-card reveal reveal-delay-1"><span class="service-number">02 / DETAIL</span><div class="service-icon"><i data-lucide="car-front"></i></div><h3>Детейлинг и полировка кузова</h3><p>Восстановление глубины цвета, блеска и визуальной привлекательности лакокрасочного покрытия.</p><i data-lucide="arrow-up-right" class="service-arrow"></i></article>
-<article class="service-card reveal reveal-delay-2"><span class="service-number">03 / INTERIOR</span><div class="service-icon"><i data-lucide="armchair"></i></div><h3>Химчистка салона</h3><p>Глубокая очистка текстиля, кожи, пластика и других элементов интерьера с учетом материала.</p><i data-lucide="arrow-up-right" class="service-arrow"></i></article>
-<article class="service-card reveal reveal-delay-3"><span class="service-number">04 / PROTECT</span><div class="service-icon"><i data-lucide="shield"></i></div><h3>Защитные покрытия</h3><p>Нанесение керамики, жидкого стекла и других защитных составов для сохранения внешнего вида автомобиля.</p><i data-lucide="arrow-up-right" class="service-arrow"></i></article>
-</div></div></section>
-<section class="cta-section"><div class="container"><div class="cta-box reveal"><div><div class="section-label">Ваш автомобиль заслуживает лучшего</div><h2>Подарите автомобилю <span class="gold-text">новый уровень ухода</span></h2><p>Свяжитесь с нами и подберем подходящую услугу.</p></div><a href="#contacts" class="btn btn-primary">Записаться <i data-lucide="arrow-up-right"></i></a></div></div></section>
-<section class="section contacts" id="contacts"><div class="container contacts-grid">
-<div class="contacts-content reveal"><div class="section-label">Контакты</div><h2 class="section-title">Связаться <span>с нами</span></h2><p class="section-description">Будем рады видеть вас в нашей автомойке. Позвоните или оставьте заявку, чтобы подобрать удобное время.</p>
-<div class="contact-info">
-<div class="contact-item"><div class="contact-icon"><i data-lucide="phone"></i></div><div><small>Телефон</small><a href="tel:+79990000000">+7 (999) 000-00-00</a></div></div>
-<div class="contact-item"><div class="contact-icon"><i data-lucide="map-pin"></i></div><div><small>Адрес</small><strong>Ваш город, ваша улица, 1</strong></div></div>
-<div class="contact-item"><div class="contact-icon"><i data-lucide="clock"></i></div><div><small>Время работы</small><strong>Ежедневно: 09:00 — 21:00</strong></div></div>
-</div>
-<div class="social-links"><a href="https://t.me/" class="social-link" target="_blank" rel="noopener noreferrer"><i data-lucide="send"></i>Telegram</a><a href="https://wa.me/79990000000" class="social-link" target="_blank" rel="noopener noreferrer"><i data-lucide="message-circle"></i>WhatsApp</a><a href="https://instagram.com/" class="social-link" target="_blank" rel="noopener noreferrer"><i data-lucide="instagram"></i>Instagram</a></div>
-</div>
-<form class="contact-form reveal reveal-delay-1" id="contactForm"><h3>Записаться на мойку</h3><p>Оставьте свои контакты, и мы свяжемся с вами для подтверждения записи.</p>
-<div class="form-group"><label for="name">Ваше имя</label><input type="text" id="name" name="name" placeholder="Как к вам обращаться?" autocomplete="name" required></div>
-<div class="form-group"><label for="phone">Номер телефона</label><input type="tel" id="phone" name="phone" placeholder="+7 (999) 000-00-00" autocomplete="tel" required></div>
-<div class="form-group"><label for="service">Интересующая услуга</label><input type="text" id="service" name="service" placeholder="Например, комплексная мойка"></div>
-<div class="form-group"><label for="message">Комментарий</label><textarea id="message" name="message" placeholder="Расскажите, что вас интересует..."></textarea></div>
-<button type="submit" class="btn btn-primary">Отправить заявку <i data-lucide="arrow-up-right"></i></button>
-<p class="form-note">Нажимая кнопку, вы соглашаетесь на обработку предоставленных контактных данных для связи по вашей заявке.</p><div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
-</form></div></section>
-</main>
-<footer class="footer"><div class="container"><div class="footer-main"><div><a href="#home" class="logo"><span class="logo-icon"><i data-lucide="car-front"></i></span><span class="logo-text"><span class="logo-name">АвтоМойка</span><span class="logo-subtitle">Premium car care</span></span></a><p class="footer-text">Профессиональный уход за автомобилем. Чистота, качество и внимание к каждой детали.</p></div><nav class="footer-nav" aria-label="Навигация в подвале"><a href="#home">Главная</a><a href="#about">О нас</a><a href="#services">Услуги</a><a href="#contacts">Контакты</a></nav></div><div class="footer-bottom"><span>© <span id="currentYear"></span> АвтоМойка. Все права защищены.</span><a href="#home">Наверх ↑</a></div></div></footer>
-<script>
-document.addEventListener('DOMContentLoaded',function(){
-if(window.lucide)lucide.createIcons();
-const header=document.getElementById('header');
-function updateHeader(){header.classList.toggle('scrolled',window.scrollY>30)}
-updateHeader();window.addEventListener('scroll',updateHeader,{passive:true});
-const menuToggle=document.getElementById('menuToggle'),nav=document.getElementById('nav');
-function closeMenu(){nav.classList.remove('active');document.body.classList.remove('menu-open');menuToggle.setAttribute('aria-expanded','false');menuToggle.setAttribute('aria-label','Открыть меню');menuToggle.innerHTML='<i data-lucide="menu"></i>';if(window.lucide)lucide.createIcons()}
-menuToggle.addEventListener('click',function(){const isOpen=nav.classList.toggle('active');document.body.classList.toggle('menu-open',isOpen);menuToggle.setAttribute('aria-expanded',String(isOpen));menuToggle.setAttribute('aria-label',isOpen?'Закрыть меню':'Открыть меню');menuToggle.innerHTML=isOpen?'<i data-lucide="x"></i>':'<i data-lucide="menu"></i>';if(window.lucide)lucide.createIcons()});
-nav.querySelectorAll('a').forEach(link=>link.addEventListener('click',closeMenu));document.addEventListener('keydown',event=>{if(event.key==='Escape')closeMenu()});window.addEventListener('resize',()=>{if(window.innerWidth>850)closeMenu()});
-const revealElements=document.querySelectorAll('.reveal'),reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-if('IntersectionObserver'in window&&!reduced){const observer=new IntersectionObserver((entries,instance)=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');instance.unobserve(entry.target)}}),{threshold:.12,rootMargin:'0px 0px -35px 0px'});revealElements.forEach(el=>observer.observe(el))}else revealElements.forEach(el=>el.classList.add('visible'));
-document.getElementById('currentYear').textContent=new Date().getFullYear();
-const phoneInput=document.getElementById('phone');phoneInput.addEventListener('input',function(){let digits=phoneInput.value.replace(/\D/g,'');if(!digits){phoneInput.value='';return}if(digits[0]==='8')digits='7'+digits.substring(1);if(digits[0]!=='7')digits='7'+digits;digits=digits.substring(0,11);let formatted='+7';if(digits.length>1)formatted+=' ('+digits.substring(1,4);if(digits.length>=4)formatted+=')';if(digits.length>4)formatted+=' '+digits.substring(4,7);if(digits.length>7)formatted+='-'+digits.substring(7,9);if(digits.length>9)formatted+='-'+digits.substring(9,11);phoneInput.value=formatted});
-const form=document.getElementById('contactForm'),status=document.getElementById('formStatus');
-form.addEventListener('submit',function(event){event.preventDefault();const name=document.getElementById('name').value.trim(),phone=phoneInput.value.trim(),service=document.getElementById('service').value.trim(),message=document.getElementById('message').value.trim();if(!name||!phone){status.textContent='Пожалуйста, заполните имя и номер телефона.';return}if(phone.replace(/\D/g,'').length<10){status.textContent='Пожалуйста, укажите корректный номер телефона.';return}
-const whatsappNumber='79990000000';const text=['Здравствуйте! Хочу записаться в АвтоМойку.','','Имя: '+name,'Телефон: '+phone,'Услуга: '+(service||'Не указана'),'Комментарий: '+(message||'Нет комментария')].join('\n');const url='https://wa.me/'+whatsappNumber+'?text='+encodeURIComponent(text);status.textContent='Открываем WhatsApp для отправки заявки...';const win=window.open(url,'_blank','noopener,noreferrer');status.textContent=win?'Заявка подготовлена. Отправьте сообщение в WhatsApp.':'Браузер заблокировал открытие WhatsApp. Разрешите открытие новой вкладки и попробуйте снова.'});
-document.querySelectorAll('a[href^="#"]').forEach(link=>link.addEventListener('click',function(event){const id=link.getAttribute('href');if(!id||id==='#')return;const target=document.querySelector(id);if(!target)return;event.preventDefault();target.scrollIntoView({behavior:reduced?'auto':'smooth',block:'start'});if(history.replaceState)history.replaceState(null,'',id)}));
-});
-</script>
+<body id="top">
+  <a href="#main" class="skip-link">Перейти к содержимому</a>
+
+  <header>
+    <div class="container nav-wrap">
+      <a href="#top" class="brand">
+        <div class="brand-mark">AM</div>
+        <div class="brand-text">
+          <span class="brand-title">АвтоМойка</span>
+          <span class="brand-sub">Premium car care</span>
+        </div>
+      </a>
+
+      <nav class="desktop-nav" aria-label="Основная навигация">
+        <a href="#top">Главная</a>
+        <a href="#about">О нас</a>
+        <a href="#services">Услуги</a>
+        <a href="#contacts">Контакты</a>
+      </nav>
+
+      <div class="header-actions">
+        <a href="#booking" class="btn btn-primary nav-cta">Записаться</a>
+        <button type="button" class="burger-btn" id="burgerBtn" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobileDrawer">
+          <svg id="burgerIcon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <line x1="3" y1="6" x2="21" y2="6" />
+            <line x1="3" y1="12" x2="21" y2="12" />
+            <line x1="3" y1="18" x2="21" y2="18" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <div class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
+    <nav class="mobile-nav-links" aria-label="Мобильная навигация">
+      <a href="#top" class="mobile-link">Главная</a>
+      <a href="#about" class="mobile-link">О нас</a>
+      <a href="#services" class="mobile-link">Услуги</a>
+      <a href="#contacts" class="mobile-link">Контакты</a>
+    </nav>
+    <div class="mobile-drawer-footer">
+      <a href="#booking" class="btn btn-primary mobile-link" style="width: 100%;">Записаться на мойку</a>
+      <a href="tel:+79990000000" class="btn btn-outline" style="width: 100%;">+7 (999) 000-00-00</a>
+    </div>
+  </div>
+
+  <main id="main">
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">
+            <span class="eyebrow-dot"></span>
+            Автомобильный уход нового уровня
+          </div>
+          <h1><span class="gradient-text">Премиальный уход</span> за вашим автомобилем</h1>
+          <p class="hero-desc">
+            Безупречная чистота, профессиональный детейлинг и бережное отношение к каждой детали. Ваш автомобиль заслуживает большего.
+          </p>
+          <div class="hero-actions">
+            <a href="#booking" class="btn btn-primary">Записаться на мойку</a>
+            <a href="#services" class="btn btn-outline">Наши услуги</a>
+          </div>
+          <div class="hero-tagline">
+            <strong>Чистота. Забота. Совершенство.</strong>
+            <span>Scroll to explore ↓</span>
+          </div>
+        </div>
+
+        <!-- Graphic Studio Card -->
+        <div class="hero-visual" aria-label="Уход с вниманием к деталям">
+          <div class="visual-top">
+            <div class="visual-badge">Уход с вниманием к деталям</div>
+            <div class="visual-status">Запись открыта</div>
+          </div>
+
+          <div class="visual-center">
+            <div class="visual-ring">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
+              </svg>
+            </div>
+            <div class="visual-caption">
+              <strong>Студия детейлинга</strong>
+              Деликатная химия, керамика и глубокая очистка салона
+            </div>
+          </div>
+
+          <div class="visual-metric">
+            <div>
+              <div class="visual-metric-num">100%</div>
+              <div class="visual-metric-label">Внимание к вашему автомобилю</div>
+            </div>
+            <div class="visual-tags">
+              <span>PH-NEUTRAL</span>
+              <span>CERAMIC 9H</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Endless Seamless Ticker -->
+    <div class="ticker-wrap" id="tickerWrap" aria-label="Преимущества и услуги">
+      <div class="ticker-belt" id="tickerBelt">
+        <div class="ticker-group" id="tickerSource">
+          <span class="ticker-pill"><span class="ticker-dot"></span>Бережный уход</span>
+          <span class="ticker-star">✦</span>
+          <span class="ticker-pill"><span class="ticker-dot"></span>Профессиональная химия</span>
+          <span class="ticker-star">✦</span>
+          <span class="ticker-pill"><span class="ticker-dot"></span>Детейлинг</span>
+          <span class="ticker-star">✦</span>
+          <span class="ticker-pill"><span class="ticker-dot"></span>Керамика</span>
+          <span class="ticker-star">✦</span>
+          <span class="ticker-pill"><span class="ticker-dot"></span>Химчистка салона</span>
+          <span class="ticker-star">✦</span>
+          <span class="ticker-pill"><span class="ticker-dot"></span>Полировка</span>
+          <span class="ticker-star">✦</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- About -->
+    <section id="about">
+      <div class="container">
+        <div class="about-layout">
+          <div class="about-copy">
+            <div class="section-kicker">О нашей философии</div>
+            <h2>Больше, чем просто мойка</h2>
+            <p>
+              Мы создали пространство, где забота об автомобиле становится искусством. Используем профессиональную автохимию, современные технологии и опыт мастеров, чтобы сохранить идеальный внешний вид вашего автомобиля.
+            </p>
+            <p>
+              Каждая деталь имеет значение — от первого контакта с кузовом до финального блеска.
+            </p>
+          </div>
+
+          <div class="features-grid">
+            <div class="feature-card">
+              <div class="feature-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              </div>
+              <h3>Бережный уход</h3>
+              <p>Безопасные составы и деликатная обработка поверхностей.</p>
+            </div>
+
+            <div class="feature-card">
+              <div class="feature-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+              </div>
+              <h3>Идеальная чистота</h3>
+              <p>Работаем с деталями, которые обычно остаются незамеченными.</p>
+            </div>
+
+            <div class="feature-card">
+              <div class="feature-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+              </div>
+              <h3>Опытные мастера</h3>
+              <p>Профессиональный подход к каждому автомобилю.</p>
+            </div>
+
+            <div class="feature-card">
+              <div class="feature-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              </div>
+              <h3>Премиум материалы</h3>
+              <p>Профессиональная автохимия и качественные покрытия.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-box">
+            <div class="stat-num">12+</div>
+            <div class="stat-label">Лет опыта</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num">8500+</div>
+            <div class="stat-label">Довольных клиентов</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num">100%</div>
+            <div class="stat-label">Качество</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num">24/7</div>
+            <div class="stat-label">Поддержка</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-kicker">Наши услуги</div>
+          <h2>Совершенство в каждой детали</h2>
+          <p class="section-sub">
+            Подбираем индивидуальный уход с учетом состояния автомобиля, особенностей покрытия и ваших пожеланий.
+          </p>
+        </div>
+
+        <div class="services-grid">
+          <article class="service-card">
+            <div>
+              <div class="service-top">
+                <span class="service-code">01 / WASH</span>
+              </div>
+              <h3>Комплексная премиум-мойка</h3>
+              <p>Многоэтапное очищение кузова, колес, стекол и труднодоступных элементов с использованием профессиональной химии.</p>
+            </div>
+            <a href="#booking" class="service-link" data-service="Комплексная премиум-мойка">Выбрать услугу →</a>
+          </article>
+
+          <article class="service-card">
+            <div>
+              <div class="service-top">
+                <span class="service-code">02 / DETAIL</span>
+              </div>
+              <h3>Детейлинг и полировка кузова</h3>
+              <p>Восстановление глубины цвета, блеска и визуальной привлекательности лакокрасочного покрытия.</p>
+            </div>
+            <a href="#booking" class="service-link" data-service="Детейлинг и полировка кузова">Выбрать услугу →</a>
+          </article>
+
+          <article class="service-card">
+            <div>
+              <div class="service-top">
+                <span class="service-code">03 / INTERIOR</span>
+              </div>
+              <h3>Химчистка салона</h3>
+              <p>Глубокая очистка текстиля, кожи, пластика и других элементов интерьера с учетом материала.</p>
+            </div>
+            <a href="#booking" class="service-link" data-service="Химчистка салона">Выбрать услугу →</a>
+          </article>
+
+          <article class="service-card">
+            <div>
+              <div class="service-top">
+                <span class="service-code">04 / PROTECT</span>
+              </div>
+              <h3>Защитные покрытия</h3>
+              <p>Нанесение керамики, жидкого стекла и других защитных составов для сохранения внешнего вида автомобиля.</p>
+            </div>
+            <a href="#booking" class="service-link" data-service="Защитные покрытия">Выбрать услугу →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+      <div class="container">
+        <div class="cta-banner">
+          <div>
+            <div class="section-kicker">Ваш автомобиль заслуживает лучшего</div>
+            <h2>Подарите автомобилю новый уровень ухода</h2>
+            <p>Свяжитесь с нами и подберем подходящую услугу.</p>
+          </div>
+          <a href="#booking" class="btn btn-primary">Записаться</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contacts & Booking -->
+    <section id="contacts">
+      <div class="container contacts-grid">
+        <div>
+          <div class="section-kicker">Контакты</div>
+          <h2>Связаться с нами</h2>
+          <p class="section-sub">
+            Будем рады видеть вас в нашей автомойке. Позвоните или оставьте заявку, чтобы подобрать удобное время.
+          </p>
+
+          <div class="contact-list">
+            <div class="contact-item">
+              <div class="contact-item-title">Телефон</div>
+              <a href="tel:+79990000000" class="contact-item-val">+7 (999) 000-00-00</a>
+            </div>
+            <div class="contact-item">
+              <div class="contact-item-title">Адрес</div>
+              <div class="contact-item-val">Ваш город, ваша улица, 1</div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-item-title">Время работы</div>
+              <div class="contact-item-val">Ежедневно: 09:00 — 21:00</div>
+            </div>
+          </div>
+
+          <div class="socials">
+            <a href="#booking" class="social-pill">Telegram</a>
+            <a href="#booking" class="social-pill">WhatsApp</a>
+            <a href="#booking" class="social-pill">Instagram</a>
+          </div>
+        </div>
+
+        <div class="form-card" id="booking">
+          <h3>Записаться на мойку</h3>
+          <p>Оставьте свои контакты, и мы свяжемся с вами для подтверждения записи.</p>
+
+          <form id="bookingForm" novalidate>
+            <div class="form-group">
+              <input type="text" class="form-control" id="clientName" name="name" placeholder="Ваше имя" autocomplete="name" required />
+            </div>
+            <div class="form-group">
+              <input type="tel" class="form-control" id="clientPhone" name="phone" placeholder="+7 (999) 000-00-00" autocomplete="tel" inputmode="tel" required />
+            </div>
+            <div class="form-group select-wrap">
+              <select class="form-control" name="service" id="serviceSelect" aria-label="Интересующая услуга">
+                <option value="">Интересующая услуга</option>
+                <option value="Комплексная премиум-мойка">Комплексная премиум-мойка</option>
+                <option value="Детейлинг и полировка кузова">Детейлинг и полировка кузова</option>
+                <option value="Химчистка салона">Химчистка салона</option>
+                <option value="Защитные покрытия">Защитные покрытия</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <textarea class="form-control" name="comment" placeholder="Комментарий"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width: 100%;">Отправить заявку</button>
+            <p class="form-note">
+              Нажимая кнопку, вы соглашаетесь на обработку предоставленных контактных данных для связи по вашей заявке.
+            </p>
+            <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-top">
+        <div>
+          <a href="#top" class="brand">
+            <div class="brand-mark">AM</div>
+            <div class="brand-text">
+              <span class="brand-title">АвтоМойка</span>
+              <span class="brand-sub">Premium car care</span>
+            </div>
+          </a>
+          <p class="footer-desc">
+            Профессиональный уход за автомобилем. Чистота, качество и внимание к каждой детали.
+          </p>
+        </div>
+
+        <div class="footer-nav">
+          <a href="#top">Главная</a>
+          <a href="#about">О нас</a>
+          <a href="#services">Услуги</a>
+          <a href="#contacts">Контакты</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© <span id="yearSpan"></span> АвтоМойка. Все права защищены.</span>
+        <a href="#top" class="back-top">Наверх ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var yearSpan = document.getElementById('yearSpan');
+      if (yearSpan) yearSpan.textContent = new Date().getFullYear();
+
+      // ======================================================================
+      // Seamless Endless Ticker (requestAnimationFrame, zero jumps or freezes)
+      // ======================================================================
+      var tickerWrap = document.getElementById('tickerWrap');
+      var tickerBelt = document.getElementById('tickerBelt');
+      var tickerSource = document.getElementById('tickerSource');
+
+      if (tickerWrap && tickerBelt && tickerSource) {
+        var singleWidth = 0;
+        var offset = 0;
+        var lastTime = 0;
+        var isPaused = false;
+        var speedPxPerSec = 58; // комфортная плавная скорость
+
+        function buildTickerClones() {
+          // Удаляем старые клоны, оставляя только оригинал
+          while (tickerBelt.children.length > 1) {
+            tickerBelt.removeChild(tickerBelt.lastChild);
+          }
+          singleWidth = tickerSource.getBoundingClientRect().width;
+          if (singleWidth <= 0) return;
+
+          // Добавляем столько копий, чтобы закрыть любую ширину экрана + запас
+          var neededCopies = Math.ceil(window.innerWidth / singleWidth) + 2;
+          for (var c = 0; c < neededCopies; c++) {
+            var clone = tickerSource.cloneNode(true);
+            clone.removeAttribute('id');
+            clone.setAttribute('aria-hidden', 'true');
+            tickerBelt.appendChild(clone);
+          }
+        }
+
+        buildTickerClones();
+        window.addEventListener('resize', buildTickerClones);
+
+        tickerWrap.addEventListener('mouseenter', function () {
+          isPaused = true;
+        });
+        tickerWrap.addEventListener('mouseleave', function () {
+          isPaused = false;
+          lastTime = 0;
+        });
+
+        function tick(now) {
+          if (!lastTime) lastTime = now;
+          var dt = Math.min((now - lastTime) / 1000, 0.1);
+          lastTime = now;
+
+          if (!isPaused && singleWidth > 0) {
+            offset += speedPxPerSec * dt;
+            if (offset >= singleWidth) {
+              offset -= singleWidth;
+            }
+            tickerBelt.style.transform = 'translate3d(' + (-offset.toFixed(2)) + 'px, 0, 0)';
+          }
+          requestAnimationFrame(tick);
+        }
+
+        requestAnimationFrame(tick);
+      }
+
+      // ======================================================================
+      // Mobile Menu Drawer
+      // ======================================================================
+      var burgerBtn = document.getElementById('burgerBtn');
+      var mobileDrawer = document.getElementById('mobileDrawer');
+      var burgerIcon = document.getElementById('burgerIcon');
+      var mobileLinks = document.querySelectorAll('.mobile-link');
+
+      function setMenuState(open) {
+        if (!mobileDrawer || !burgerBtn || !burgerIcon) return;
+        mobileDrawer.classList.toggle('is-open', open);
+        document.body.classList.toggle('menu-open', open);
+        burgerBtn.setAttribute('aria-expanded', String(open));
+        burgerBtn.setAttribute('aria-label', open ? 'Закрыть меню' : 'Открыть меню');
+        mobileDrawer.setAttribute('aria-hidden', String(!open));
+        burgerIcon.innerHTML = open
+          ? '<line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>'
+          : '<line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>';
+      }
+
+      if (burgerBtn && mobileDrawer) {
+        burgerBtn.addEventListener('click', function () {
+          setMenuState(!mobileDrawer.classList.contains('is-open'));
+        });
+
+        for (var i = 0; i < mobileLinks.length; i++) {
+          mobileLinks[i].addEventListener('click', function () {
+            setMenuState(false);
+          });
+        }
+
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape' && mobileDrawer.classList.contains('is-open')) {
+            setMenuState(false);
+          }
+        });
+
+        window.addEventListener('resize', function () {
+          if (window.innerWidth > 960 && mobileDrawer.classList.contains('is-open')) {
+            setMenuState(false);
+          }
+        });
+      }
+
+      // ======================================================================
+      // Service auto-select
+      // ======================================================================
+      var serviceLinks = document.querySelectorAll('.service-link');
+      for (var j = 0; j < serviceLinks.length; j++) {
+        serviceLinks[j].addEventListener('click', function () {
+          var select = document.getElementById('serviceSelect');
+          var val = this.getAttribute('data-service');
+          if (select && val) select.value = val;
+        });
+      }
+
+      // ======================================================================
+      // Phone mask (+7 (XXX) XXX-XX-XX)
+      // ======================================================================
+      var phoneInput = document.getElementById('clientPhone');
+      if (phoneInput) {
+        phoneInput.addEventListener('input', function () {
+          var digits = phoneInput.value.replace(/\D/g, '');
+          if (!digits) {
+            phoneInput.value = '';
+            return;
+          }
+          if (digits[0] === '8') digits = '7' + digits.slice(1);
+          if (digits[0] !== '7') digits = '7' + digits;
+          digits = digits.slice(0, 11);
+
+          var out = '+7';
+          if (digits.length > 1) out += ' (' + digits.slice(1, 4);
+          if (digits.length >= 4) out += ')';
+          if (digits.length > 4) out += ' ' + digits.slice(4, 7);
+          if (digits.length > 7) out += '-' + digits.slice(7, 9);
+          if (digits.length > 9) out += '-' + digits.slice(9, 11);
+          phoneInput.value = out;
+          phoneInput.classList.remove('is-invalid');
+        });
+      }
+
+      // ======================================================================
+      // Form validation & demo submit
+      // ======================================================================
+      var form = document.getElementById('bookingForm');
+      var nameInput = document.getElementById('clientName');
+      var statusBox = document.getElementById('formStatus');
+
+      if (nameInput) {
+        nameInput.addEventListener('input', function () {
+          nameInput.classList.remove('is-invalid');
+        });
+      }
+
+      if (form && statusBox) {
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+          var nameVal = nameInput.value.trim();
+          var phoneDigits = phoneInput.value.replace(/\D/g, '');
+
+          nameInput.classList.remove('is-invalid');
+          phoneInput.classList.remove('is-invalid');
+          statusBox.className = 'form-status';
+
+          if (!nameVal) {
+            nameInput.classList.add('is-invalid');
+            statusBox.textContent = 'Пожалуйста, укажите ваше имя.';
+            statusBox.classList.add('error');
+            nameInput.focus();
+            return;
+          }
+
+          if (phoneDigits.length < 11) {
+            phoneInput.classList.add('is-invalid');
+            statusBox.textContent = 'Введите корректный номер телефона полностью.';
+            statusBox.classList.add('error');
+            phoneInput.focus();
+            return;
+          }
+
+          statusBox.textContent = 'Спасибо, ' + nameVal + '! Заявка успешно принята (демо-режим шаблона).';
+          statusBox.classList.add('success');
+          form.reset();
+        });
+      }
+    })();
+  </script>
 </body>
 </html>
